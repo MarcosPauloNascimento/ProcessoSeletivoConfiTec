@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31402.337
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Services", "1 - Services", "{E815F056-43D1-45FD-9F55-0A2B4B4A4997}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{E815F056-43D1-45FD-9F55-0A2B4B4A4997}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Application", "2 - Application", "{84FC9AB0-28AE-433D-9199-B84908FFDF5E}"
 EndProject
@@ -11,17 +11,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infrastructure", "4 - Infrastructure", "{063CA4A2-CE92-40B7-8601-CA597B48DEAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteTecnico.Api", "TesteTecnico.Api\TesteTecnico.Api.csproj", "{F5AFC60E-056D-4375-80CF-0C0DB5EA5BB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesteTecnico.Api", "TesteTecnico.Api\TesteTecnico.Api.csproj", "{F5AFC60E-056D-4375-80CF-0C0DB5EA5BB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteTecnico.Application", "TesteTecnico.Application\TesteTecnico.Application.csproj", "{B1FDD740-F87E-4F76-B8D3-D00DA1021397}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesteTecnico.Application", "TesteTecnico.Application\TesteTecnico.Application.csproj", "{B1FDD740-F87E-4F76-B8D3-D00DA1021397}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteTecnico.Domain", "TesteTecnico.Domain\TesteTecnico.Domain.csproj", "{72B9821D-505D-4662-83D7-A951A278BA94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesteTecnico.Domain", "TesteTecnico.Domain\TesteTecnico.Domain.csproj", "{72B9821D-505D-4662-83D7-A951A278BA94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteTecnico.Domain.Core", "TesteTecnico.Domain.Core\TesteTecnico.Domain.Core.csproj", "{FFF8B87E-B357-44EE-9D22-DB2D175136ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesteTecnico.Domain.Services", "TesteTecnico.Domain.Services\TesteTecnico.Domain.Services.csproj", "{928C9A9D-0091-47B5-BD47-E680D092D532}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteTecnico.Domain.Services", "TesteTecnico.Domain.Services\TesteTecnico.Domain.Services.csproj", "{928C9A9D-0091-47B5-BD47-E680D092D532}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesteTecnico.Infrastructure", "TesteTecnico.Infrastructure\TesteTecnico.Infrastructure.csproj", "{0EF31050-8B6E-4E2C-9DA5-15C83BA191E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteTecnico.Infrastructure", "TesteTecnico.Infrastructure\TesteTecnico.Infrastructure.csproj", "{0EF31050-8B6E-4E2C-9DA5-15C83BA191E6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Entities", "5 - Entities", "{55DA4D12-4716-4D2A-99B7-A0A8BD9F203B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesteTecnico.Entities", "TesteTecnico.Entities\TesteTecnico.Entities.csproj", "{97E41E65-406F-496D-A8CB-430B835D7D4C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesteTecnico.Domain.Core", "TesteTecnico.Domain.Core\TesteTecnico.Domain.Core.csproj", "{9D954324-FD0E-48D2-8851-32D3F11E6CB5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +45,6 @@ Global
 		{72B9821D-505D-4662-83D7-A951A278BA94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72B9821D-505D-4662-83D7-A951A278BA94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72B9821D-505D-4662-83D7-A951A278BA94}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FFF8B87E-B357-44EE-9D22-DB2D175136ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FFF8B87E-B357-44EE-9D22-DB2D175136ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FFF8B87E-B357-44EE-9D22-DB2D175136ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FFF8B87E-B357-44EE-9D22-DB2D175136ED}.Release|Any CPU.Build.0 = Release|Any CPU
 		{928C9A9D-0091-47B5-BD47-E680D092D532}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{928C9A9D-0091-47B5-BD47-E680D092D532}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{928C9A9D-0091-47B5-BD47-E680D092D532}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -53,6 +53,14 @@ Global
 		{0EF31050-8B6E-4E2C-9DA5-15C83BA191E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0EF31050-8B6E-4E2C-9DA5-15C83BA191E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0EF31050-8B6E-4E2C-9DA5-15C83BA191E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97E41E65-406F-496D-A8CB-430B835D7D4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97E41E65-406F-496D-A8CB-430B835D7D4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97E41E65-406F-496D-A8CB-430B835D7D4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97E41E65-406F-496D-A8CB-430B835D7D4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D954324-FD0E-48D2-8851-32D3F11E6CB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D954324-FD0E-48D2-8851-32D3F11E6CB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D954324-FD0E-48D2-8851-32D3F11E6CB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D954324-FD0E-48D2-8851-32D3F11E6CB5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,9 +69,10 @@ Global
 		{F5AFC60E-056D-4375-80CF-0C0DB5EA5BB7} = {E815F056-43D1-45FD-9F55-0A2B4B4A4997}
 		{B1FDD740-F87E-4F76-B8D3-D00DA1021397} = {84FC9AB0-28AE-433D-9199-B84908FFDF5E}
 		{72B9821D-505D-4662-83D7-A951A278BA94} = {DC9E5468-0FD3-404A-B82D-B1C3EB898CAA}
-		{FFF8B87E-B357-44EE-9D22-DB2D175136ED} = {DC9E5468-0FD3-404A-B82D-B1C3EB898CAA}
 		{928C9A9D-0091-47B5-BD47-E680D092D532} = {DC9E5468-0FD3-404A-B82D-B1C3EB898CAA}
 		{0EF31050-8B6E-4E2C-9DA5-15C83BA191E6} = {063CA4A2-CE92-40B7-8601-CA597B48DEAA}
+		{97E41E65-406F-496D-A8CB-430B835D7D4C} = {55DA4D12-4716-4D2A-99B7-A0A8BD9F203B}
+		{9D954324-FD0E-48D2-8851-32D3F11E6CB5} = {DC9E5468-0FD3-404A-B82D-B1C3EB898CAA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BF16877-EDE6-4340-925B-EEB139397C19}

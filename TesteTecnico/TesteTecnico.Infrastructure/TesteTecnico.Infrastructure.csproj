@@ -5,8 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
     <Folder Include="CrossCutting\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TesteTecnico.Domain\TesteTecnico.Domain.csproj" />
+    <ProjectReference Include="..\TesteTecnico.Entities\TesteTecnico.Entities.csproj" />
   </ItemGroup>
 
 </Project>
