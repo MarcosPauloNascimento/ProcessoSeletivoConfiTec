@@ -5,8 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\" />
-    <Folder Include="Interfaces\" />
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TesteTecnico.Domain.Core\TesteTecnico.Domain.Core.csproj" />
+    <ProjectReference Include="..\TesteTecnico.Entities\TesteTecnico.Entities.csproj" />
   </ItemGroup>
 
 </Project>

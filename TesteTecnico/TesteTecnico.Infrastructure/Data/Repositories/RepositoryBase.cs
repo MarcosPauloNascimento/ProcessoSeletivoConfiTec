@@ -1,45 +1,69 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using TesteTecnico.Domain.Interfaces.Repositories;
+using TesteTecnico.Domain.Core.Interfaces.Repositories;
 
 namespace TesteTecnico.Infrastructure.Data.Repositories
 {
     public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class
     {
-        private readonly SqlContext _sqlContext;
+        protected readonly SqlContext _sqlContext;
+        protected readonly DbSet<TEntity> _dbSet;
+        private bool disposed = false;
 
-        public RepositoryBase(SqlContext sqlContext)
+        protected RepositoryBase(SqlContext db)
         {
-            _sqlContext = sqlContext;
+            _sqlContext = db;
+            _dbSet = db.Set<TEntity>();
         }
 
-        public async Task AddAsync(TEntity entity)
+        public async Task Add(TEntity entity)
         {
-            await _sqlContext.AddAsync<TEntity>(entity);
+            await _dbSet.AddAsync(entity);
             await _sqlContext.SaveChangesAsync();
         }
 
         public async Task Update(TEntity entity)
         {
-            _sqlContext.Update<TEntity>(entity);
+            _dbSet.Update(entity);
             await _sqlContext.SaveChangesAsync();
         }
 
         public async Task Delete(TEntity entity)
         {
-            _sqlContext.Remove<TEntity>(entity);
+            _dbSet.Remove(entity);
             await _sqlContext.SaveChangesAsync();
         }
 
-        public async Task<TEntity> GetAsync(int entityId)
+        public async Task<TEntity> Get(int entityId)
         {
-            return await _sqlContext.FindAsync<TEntity>(entityId);
+            return await _dbSet.FindAsync(entityId);
         }
 
-        public async Task<List<TEntity>> GetAllAsync()
+        public async Task<List<TEntity>> GetAll()
         {
-            return await _sqlContext.FindAsync<List<TEntity>>();
+            return await _dbSet.ToListAsync();
         }
-        
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this.disposed)
+            {
+                if (disposing)
+                {
+                    _sqlContext?.Dispose();
+                }
+
+                disposed = true;
+            }
+        }
+
     }
 }

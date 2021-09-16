@@ -1,10 +1,9 @@
-﻿using System.Threading.Tasks;
-using TesteTecnico.Entities.Entities;
+﻿using TesteTecnico.Entities.Entities;
 
 namespace TesteTecnico.Domain.Core.Interfaces.Repositories
 {
-    interface IUserRepository : IRepositoryBase<User>
+    public interface IUserRepository : IRepositoryBase<User>
     {
-        Task Save(User user);
+        
     }
 }

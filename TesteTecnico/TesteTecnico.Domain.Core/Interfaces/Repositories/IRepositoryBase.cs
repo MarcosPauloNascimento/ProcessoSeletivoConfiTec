@@ -1,15 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace TesteTecnico.Domain.Core.Interfaces.Repositories
 {
-    public interface IRepositoryBase<TEntity> where TEntity : class
+    public interface IRepositoryBase<TEntity>: IDisposable where TEntity : class
     {
 
-        Task AddAsync(TEntity entity);
+        Task Add(TEntity entity);
+        
         Task Update(TEntity entity);
+
         Task Delete(TEntity entity);
-        Task<TEntity> GetAsync(int entityId);
-        Task<List<TEntity>> GetAllAsync();
+        
+        Task<TEntity> Get(int entityId);
+        
+        Task<List<TEntity>> GetAll();
     }
 }
