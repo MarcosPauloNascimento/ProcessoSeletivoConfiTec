@@ -8,5 +8,7 @@ namespace TesteTecnico.Domain.Core.Interfaces.Services
         bool HasNotification();
         List<Notification> GetNotifications();
         void Handle(Notification notification);
+
+        void AddNotification(string message);
     }
 }

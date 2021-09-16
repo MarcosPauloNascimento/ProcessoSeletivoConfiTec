@@ -1,5 +1,7 @@
+using Financial.AccountsReceiving.Api.Configuration.AutoMapperProfiles;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,7 +25,10 @@ namespace TesteTecnico.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper(typeof(UserProfile));
+
             services.AddControllers();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
             services.AddDbContext<SqlContext>(options =>
             {
@@ -42,7 +47,6 @@ namespace TesteTecnico.Api
                 });
             });
 
-            services.AddAutoMapper(typeof(Startup));
 
             services.AddDependencyInjectionSetup();
         }

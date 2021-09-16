@@ -24,7 +24,7 @@ namespace TesteTecnico.Infrastructure.CrossCutting.Ioc
             services.AddScoped<IApplicationServiceUser, ApplicationServiceUser>();
 
             // Domain  
-            services.AddScoped<SqlContext>();
+            services.AddTransient<SqlContext>();
             services.AddScoped<IServiceUser, ServiceUser>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<INotifier, Notifier>();

@@ -27,5 +27,10 @@ namespace TesteTecnico.Domain.Core.Notifications
         {
             return _notifications.Any();
         }
+
+        public void AddNotification(string message)
+        {
+            _notifications.Add(new Notification(message));
+        }
     }
 }

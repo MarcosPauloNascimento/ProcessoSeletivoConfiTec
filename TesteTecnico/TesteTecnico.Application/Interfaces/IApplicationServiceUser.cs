@@ -6,7 +6,9 @@ namespace TesteTecnico.Application.Interfaces
 {
     public interface IApplicationServiceUser
     {
-        Task Save(UserDto userDto);
+        Task<int?> Add(UserDto userDto);
+
+        Task Update(UserDto userDto);
 
         Task Delete(UserDto userDto);
 

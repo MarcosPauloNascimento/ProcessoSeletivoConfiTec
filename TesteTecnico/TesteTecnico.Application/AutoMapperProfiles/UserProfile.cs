@@ -8,7 +8,10 @@ namespace Financial.AccountsReceiving.Api.Configuration.AutoMapperProfiles
     {
         public UserProfile()
         {
-            CreateMap<User, UserDto>().ReverseMap();
+            CreateMap<UserDto, User>()
+                .ForMember(dest => dest.SchoolingId, opt => opt.MapFrom(src => src.Schooling.GetHashCode()))
+                .ReverseMap();
+
         }
     }
 }
