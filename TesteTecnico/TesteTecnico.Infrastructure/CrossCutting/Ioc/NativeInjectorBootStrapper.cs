@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using TesteTecnico.Application;
 using TesteTecnico.Application.Interfaces;
@@ -23,12 +22,13 @@ namespace TesteTecnico.Infrastructure.CrossCutting.Ioc
             // APPLICATION
             services.AddScoped<IApplicationServiceUser, ApplicationServiceUser>();
 
-            // Domain  
-            services.AddTransient<SqlContext>();
+            // DOMAIN  
             services.AddScoped<IServiceUser, ServiceUser>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<INotifier, Notifier>();
 
+            //INFRA
+            services.AddScoped<SqlContext>();
         }
     }
 }

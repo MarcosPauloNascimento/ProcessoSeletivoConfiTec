@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using TesteTecnico.Domain.Core.Interfaces.Repositories;
 
@@ -44,6 +45,13 @@ namespace TesteTecnico.Infrastructure.Data.Repositories
         public async Task<List<TEntity>> GetAll()
         {
             return await _dbSet.ToListAsync();
+        }
+
+        public void Detach(Func<TEntity, bool> predicate)
+        {
+            var entity = _dbSet.Local.Where(predicate).FirstOrDefault();
+            if (entity != null)
+                _sqlContext.Entry(entity).State = EntityState.Detached;
         }
 
         public void Dispose()

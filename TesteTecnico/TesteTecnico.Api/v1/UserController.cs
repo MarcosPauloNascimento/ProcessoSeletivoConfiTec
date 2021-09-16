@@ -65,7 +65,7 @@ namespace TesteTecnico.Api.v1
             if(!ValidOperation())
                 return CustomResponse();
 
-            return CreatedAtAction(Url.Link("Get/v1/", new { Id = userId.Value }), userId);
+            return CreatedAtAction("Post", userId);
         }
 
         // PUT api/v1/<UserController>/5
@@ -74,7 +74,7 @@ namespace TesteTecnico.Api.v1
         {
             if (id != userDto.Id)
             {
-                Notify("Os ids informados não são iguais!");
+                Notify("Os códigos informados não são iguais!");
                 return CustomResponse();
             }
 
@@ -82,6 +82,9 @@ namespace TesteTecnico.Api.v1
                 return CustomResponse(ModelState);
 
             await _applicationServiceUser.Update(userDto);
+
+            if (!ValidOperation())
+                return CustomResponse();
 
             return Ok();
         }
@@ -99,6 +102,9 @@ namespace TesteTecnico.Api.v1
                 return NotFound();
 
             await _applicationServiceUser.Delete(userDto);
+
+            if (!ValidOperation())
+                return CustomResponse();
 
             return NoContent();
         }

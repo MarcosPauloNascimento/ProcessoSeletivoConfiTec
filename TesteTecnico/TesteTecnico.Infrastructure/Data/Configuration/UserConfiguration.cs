@@ -10,8 +10,8 @@ namespace TesteTecnico.Infrastructure.Data.Configuration
         {
             builder.ToTable("User");
             builder.HasKey(u => u.Id);
-            builder.Property(u => u.Nome).HasColumnType("VARCHAR(100)").IsRequired();
-            builder.Property(u => u.SobreNome).HasColumnType("VARCHAR(100)").IsRequired();
+            builder.Property(u => u.Name).HasColumnType("VARCHAR(100)").IsRequired();
+            builder.Property(u => u.LastName).HasColumnType("VARCHAR(100)").IsRequired();
             builder.Property(u => u.Email).HasColumnType("VARCHAR(100)").IsRequired();
             builder.Property(u => u.BirthDate).HasColumnType("DATETIME").IsRequired();
             builder.Property(u => u.SchoolingId).HasColumnType("INT").IsRequired();

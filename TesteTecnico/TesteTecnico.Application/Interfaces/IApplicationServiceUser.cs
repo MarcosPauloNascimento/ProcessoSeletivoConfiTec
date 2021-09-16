@@ -8,7 +8,7 @@ namespace TesteTecnico.Application.Interfaces
     {
         Task<int?> Add(UserDto userDto);
 
-        Task Update(UserDto userDto);
+        Task<bool> Update(UserDto userDto);
 
         Task Delete(UserDto userDto);
 

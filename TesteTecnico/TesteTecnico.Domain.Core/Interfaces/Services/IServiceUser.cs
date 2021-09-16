@@ -14,5 +14,7 @@ namespace TesteTecnico.Domain.Core.Interfaces.Services
         Task<User> Get(int id);
 
         Task<IEnumerable<User>> GetAll();
+
+        void Detach(User user);
     }
 }

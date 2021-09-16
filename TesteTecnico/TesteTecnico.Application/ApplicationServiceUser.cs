@@ -4,53 +4,59 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using TesteTecnico.Application.Dtos;
 using TesteTecnico.Application.Interfaces;
+using TesteTecnico.Application.Validations;
 using TesteTecnico.Domain.Core.Interfaces.Services;
 using TesteTecnico.Entities.Entities;
-using TesteTecnico.Entities.Entities.Enums;
 
 namespace TesteTecnico.Application
 {
-    public class ApplicationServiceUser : IApplicationServiceUser
+    public class ApplicationServiceUser : ServiceBase, IApplicationServiceUser
     {
         private readonly IMapper _mapper;
         private readonly IServiceUser _serviceUser;
-        private readonly INotifier _notifier;
 
         public ApplicationServiceUser(IMapper mapper, IServiceUser serviceUser, INotifier notifier)
+            : base(notifier)
         {
             _mapper = mapper;
             _serviceUser = serviceUser;
-            _notifier = notifier;
         }
 
         public async Task<int?> Add(UserDto userDto)
         {
             try
             {
-                User user = _mapper.Map<UserDto, User>(userDto);
+                var user = _mapper.Map<UserDto, User>(userDto);
+
+                if(!ExecuteValidation(new UserValidations(), user))
+                    return null;
+
                 await _serviceUser.Save(user);
                 return user.Id;
             }
             catch (Exception e)
             {
-                _notifier.AddNotification($"Erro ao tentar adicionar o usuário | {e.InnerException.Message}");
+                Notify($"Erro ao tentar adicionar o usuário | {e.InnerException.Message}");
                 return null;
             }
         }
 
-        public async Task Update(UserDto userDto)
+        public async Task<bool> Update(UserDto userDto)
         {
             try
             {
-                //var user = _serviceUser.Get(userDto.Id);
-
                 var user = _mapper.Map<User>(userDto);
-                await _serviceUser.Save(user);
 
+                if (!ExecuteValidation(new UserValidations(), user))
+                    return false;
+
+                await _serviceUser.Save(user);
+                return true;
             }
             catch (Exception e)
             {
-                _notifier.AddNotification(e.Message);
+                Notify($"Erro ao tentar atualizar o usuário | {e.InnerException.Message}");
+                return false;
             }
         }
 
@@ -59,11 +65,12 @@ namespace TesteTecnico.Application
             try
             {
                 var user = _mapper.Map<User>(userDto);
+                _serviceUser.Detach(user);
                 await _serviceUser.Delete(user);
             }
             catch (Exception e)
             {
-                _notifier.AddNotification(e.Message);
+                Notify($"Erro ao tentar remover o usuário | {e.InnerException.Message}");
             }
         }
 

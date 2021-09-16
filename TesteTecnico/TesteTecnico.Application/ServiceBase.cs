@@ -3,7 +3,7 @@ using FluentValidation.Results;
 using TesteTecnico.Domain.Core.Interfaces.Services;
 using TesteTecnico.Domain.Core.Notifications;
 
-namespace TesteTecnico.Domain.Services
+namespace TesteTecnico.Application
 {
     public abstract class ServiceBase
     {

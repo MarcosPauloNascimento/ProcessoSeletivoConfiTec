@@ -16,5 +16,7 @@ namespace TesteTecnico.Domain.Core.Interfaces.Repositories
         Task<TEntity> Get(int entityId);
         
         Task<List<TEntity>> GetAll();
+
+        void Detach(Func<TEntity, bool> predicate);
     }
 }

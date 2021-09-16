@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="10.3.3" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\TesteTecnico.Domain.Core\TesteTecnico.Domain.Core.csproj" />
   </ItemGroup>
 

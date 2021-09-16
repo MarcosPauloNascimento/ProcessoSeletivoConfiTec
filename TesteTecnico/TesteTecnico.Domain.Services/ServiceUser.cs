@@ -6,11 +6,11 @@ using TesteTecnico.Entities.Entities;
 
 namespace TesteTecnico.Domain.Services
 {
-    public class ServiceUser : ServiceBase, IServiceUser
+    public class ServiceUser : IServiceUser
     {
         private readonly IUserRepository _userRepository;
 
-        public ServiceUser(IUserRepository userRepository, INotifier notifier) : base(notifier)
+        public ServiceUser(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }
@@ -36,6 +36,11 @@ namespace TesteTecnico.Domain.Services
         public async Task<IEnumerable<User>> GetAll()
         {
             return await _userRepository.GetAll();
+        }
+
+        public void Detach(User user)
+        {
+            _userRepository.Detach(x => x.Id == user.Id);
         }
 
         public void Dispose()
