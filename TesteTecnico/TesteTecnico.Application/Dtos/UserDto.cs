@@ -24,6 +24,6 @@ namespace TesteTecnico.Application.Dtos
         public DateTime BirthDate { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public Schooling Schooling { get; set; }
+        public string Schooling { get; set; }
     }
 }

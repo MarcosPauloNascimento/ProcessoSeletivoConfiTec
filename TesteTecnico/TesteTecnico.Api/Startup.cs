@@ -25,6 +25,14 @@ namespace TesteTecnico.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("Total",
+                    builder => builder.AllowAnyOrigin()
+                                      .AllowAnyMethod()
+                                      .AllowAnyHeader());
+            });
+
             services.AddAutoMapper(typeof(UserProfile));
 
             services.AddControllers();
@@ -47,13 +55,15 @@ namespace TesteTecnico.Api
                 });
             });
 
-
             services.AddDependencyInjectionSetup();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors("Total");
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -76,6 +86,7 @@ namespace TesteTecnico.Api
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }

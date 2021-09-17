@@ -28,7 +28,7 @@ namespace TesteTecnico.Application
             {
                 var user = _mapper.Map<UserDto, User>(userDto);
 
-                if(!ExecuteValidation(new UserValidations(), user))
+                if (!ExecuteValidation(new UserValidations(), user))
                     return null;
 
                 await _serviceUser.Save(user);
@@ -84,6 +84,6 @@ namespace TesteTecnico.Application
         {
             var user = await _serviceUser.Get(id);
             return _mapper.Map<UserDto>(user);
-        }
+        }        
     }
 }

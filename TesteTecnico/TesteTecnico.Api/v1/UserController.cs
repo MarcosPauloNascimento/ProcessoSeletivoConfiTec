@@ -11,7 +11,7 @@ using TesteTecnico.Entities.Entities.Enums;
 
 namespace TesteTecnico.Api.v1
 {
-    [Route("api/v1/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class UserController : MainController
     {
@@ -23,7 +23,7 @@ namespace TesteTecnico.Api.v1
 
         }
 
-        // GET: api/v1/<UserController>
+        // GET: api/<UserController>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserDto>>> Get()
         {
@@ -35,7 +35,7 @@ namespace TesteTecnico.Api.v1
             return Ok(userList);
         }
 
-        // GET api/v1/<UserController>/5
+        // GET api/<UserController>/5
         [HttpGet("{id:int}")]
         public async Task<ActionResult<UserDto>> Get(int id)
         {
@@ -50,7 +50,7 @@ namespace TesteTecnico.Api.v1
             return Ok(user);
         }
 
-        // POST api/v1/<UserController>
+        // POST api/<UserController>
         [HttpPost]
         public async Task<ActionResult<UserDto>> Post([FromBody] UserDto userDto)
         {
@@ -68,7 +68,7 @@ namespace TesteTecnico.Api.v1
             return CreatedAtAction("Post", userId);
         }
 
-        // PUT api/v1/<UserController>/5
+        // PUT api/<UserController>/5
         [HttpPut("{id:int}")]
         public async Task<ActionResult> Put(int id, [FromBody] UserDto userDto)
         {
@@ -89,7 +89,7 @@ namespace TesteTecnico.Api.v1
             return Ok();
         }
 
-        // DELETE api/v1/<UserController>/5
+        // DELETE api/<UserController>/5
         [HttpDelete("{id:int}")]
         public async Task<ActionResult> Delete(int id)
         {
