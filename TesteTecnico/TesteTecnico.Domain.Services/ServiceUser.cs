@@ -15,30 +15,32 @@ namespace TesteTecnico.Domain.Services
             _userRepository = userRepository;
         }
 
-        public async Task Save(User user)
+        public async Task Add(Usuario user)
         {
-            if (user.Id == 0)
-                await _userRepository.Add(user);
-            else
-                await _userRepository.Update(user);
+            await _userRepository.Add(user);
         }
 
-        public async Task Delete(User user)
+        public async Task Update(Usuario user)
+        {
+            await _userRepository.Update(user);
+        }
+
+        public async Task Delete(Usuario user)
         {
             await _userRepository.Delete(user);
         }
 
-        public async Task<User> Get(int id)
+        public async Task<Usuario> Get(int id)
         {
             return await _userRepository.Get(id);
         }
 
-        public async Task<IEnumerable<User>> GetAll()
+        public async Task<IEnumerable<Usuario>> GetAll()
         {
             return await _userRepository.GetAll();
         }
 
-        public void Detach(User user)
+        public void Detach(Usuario user)
         {
             _userRepository.Detach(x => x.Id == user.Id);
         }
@@ -46,6 +48,6 @@ namespace TesteTecnico.Domain.Services
         public void Dispose()
         {
             _userRepository?.Dispose();
-        }        
+        }
     }
 }

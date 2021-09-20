@@ -2,7 +2,7 @@
 
 namespace TesteTecnico.Domain.Core.Interfaces.Repositories
 {
-    public interface IUserRepository : IRepositoryBase<User>
+    public interface IUserRepository : IRepositoryBase<Usuario>
     {
         
     }

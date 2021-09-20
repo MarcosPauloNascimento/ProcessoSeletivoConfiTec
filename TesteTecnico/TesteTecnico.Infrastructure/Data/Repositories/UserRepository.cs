@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace TesteTecnico.Infrastructure.Data.Repositories
 {
-    public class UserRepository : RepositoryBase<User>, IUserRepository
+    public class UserRepository : RepositoryBase<Usuario>, IUserRepository
     {
         private readonly SqlContext _sqlContext;
 

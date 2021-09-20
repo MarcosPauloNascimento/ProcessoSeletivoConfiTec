@@ -6,14 +6,14 @@ namespace TesteTecnico.Application.Interfaces
 {
     public interface IApplicationServiceUser
     {
-        Task<int?> Add(UserDto userDto);
+        Task<int?> Add(UsuarioDto userDto);
 
-        Task<bool> Update(UserDto userDto);
+        Task<bool> Update(UsuarioDto userDto);
 
-        Task Delete(UserDto userDto);
+        Task Delete(UsuarioDto userDto);
 
-        Task<UserDto> GetById(int id);
+        Task<UsuarioDto> GetById(int id);
 
-        Task<IEnumerable<UserDto>> GetAll();
+        Task<IEnumerable<UsuarioDto>> GetAll();
     }
 }

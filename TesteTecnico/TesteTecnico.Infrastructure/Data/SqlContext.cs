@@ -11,7 +11,7 @@ namespace TesteTecnico.Infrastructure.Data
             Database.Migrate();
         }
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

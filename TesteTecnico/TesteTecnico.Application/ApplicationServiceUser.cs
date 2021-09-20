@@ -22,16 +22,16 @@ namespace TesteTecnico.Application
             _serviceUser = serviceUser;
         }
 
-        public async Task<int?> Add(UserDto userDto)
+        public async Task<int?> Add(UsuarioDto userDto)
         {
             try
             {
-                var user = _mapper.Map<UserDto, User>(userDto);
+                var user = _mapper.Map<UsuarioDto, Usuario>(userDto);
 
                 if (!ExecuteValidation(new UserValidations(), user))
                     return null;
 
-                await _serviceUser.Save(user);
+                await _serviceUser.Add(user);
                 return user.Id;
             }
             catch (Exception e)
@@ -41,16 +41,16 @@ namespace TesteTecnico.Application
             }
         }
 
-        public async Task<bool> Update(UserDto userDto)
+        public async Task<bool> Update(UsuarioDto userDto)
         {
             try
             {
-                var user = _mapper.Map<User>(userDto);
+                var user = _mapper.Map<Usuario>(userDto);
 
                 if (!ExecuteValidation(new UserValidations(), user))
                     return false;
 
-                await _serviceUser.Save(user);
+                await _serviceUser.Update(user);
                 return true;
             }
             catch (Exception e)
@@ -60,11 +60,11 @@ namespace TesteTecnico.Application
             }
         }
 
-        public async Task Delete(UserDto userDto)
+        public async Task Delete(UsuarioDto userDto)
         {
             try
             {
-                var user = _mapper.Map<User>(userDto);
+                var user = _mapper.Map<Usuario>(userDto);
                 _serviceUser.Detach(user);
                 await _serviceUser.Delete(user);
             }
@@ -74,16 +74,16 @@ namespace TesteTecnico.Application
             }
         }
 
-        public async Task<IEnumerable<UserDto>> GetAll()
+        public async Task<IEnumerable<UsuarioDto>> GetAll()
         {
             var user = await _serviceUser.GetAll();
-            return _mapper.Map<IEnumerable<UserDto>>(user);
+            return _mapper.Map<IEnumerable<UsuarioDto>>(user);
         }
 
-        public async Task<UserDto> GetById(int id)
+        public async Task<UsuarioDto> GetById(int id)
         {
             var user = await _serviceUser.Get(id);
-            return _mapper.Map<UserDto>(user);
+            return _mapper.Map<UsuarioDto>(user);
         }        
     }
 }

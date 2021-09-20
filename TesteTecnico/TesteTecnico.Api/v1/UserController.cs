@@ -16,16 +16,18 @@ namespace TesteTecnico.Api.v1
     public class UserController : MainController
     {
         private readonly IApplicationServiceUser _applicationServiceUser;
+        private readonly INotifier _notifier;
 
         public UserController(INotifier notifier, IApplicationServiceUser applicationServiceUser) : base(notifier)
         {
             _applicationServiceUser = applicationServiceUser;
+            _notifier = notifier;
 
         }
 
         // GET: api/<UserController>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserDto>>> Get()
+        public async Task<ActionResult<IEnumerable<UsuarioDto>>> Get()
         {
             var userList = await _applicationServiceUser.GetAll();
 
@@ -37,32 +39,38 @@ namespace TesteTecnico.Api.v1
 
         // GET api/<UserController>/5
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<UserDto>> Get(int id)
+        public async Task<ActionResult<UsuarioDto>> Get(int id)
         {
             if (id <= 0)
-                return BadRequest("Código Inválido");
+            {
+                Notify("Código Inválido");
+                return CustomResponse();
+            }
 
             var user = await _applicationServiceUser.GetById(id);
 
             if (user == null)
-                return NotFound();
+                return NotFound("Não foi encontrado usuário com o código informado");
 
             return Ok(user);
         }
 
         // POST api/<UserController>
         [HttpPost]
-        public async Task<ActionResult<UserDto>> Post([FromBody] UserDto userDto)
+        public async Task<ActionResult<UsuarioDto>> Post([FromBody] UsuarioDto userDto)
         {
-            if (!ModelState.IsValid) 
+            if (!ModelState.IsValid)
                 return CustomResponse(ModelState);
 
-            if (!Enum.IsDefined(typeof(Schooling), userDto.Schooling))
-                return BadRequest("Escolaridade Inválida");
+            if (!Enum.IsDefined(typeof(Schooling), userDto.Escolaridade))
+            {
+                Notify("Escolaridade Inválida");
+                return CustomResponse();
+            }
 
             var userId = await _applicationServiceUser.Add(userDto);
 
-            if(!ValidOperation())
+            if (!ValidOperation())
                 return CustomResponse();
 
             return CreatedAtAction("Post", userId);
@@ -70,7 +78,7 @@ namespace TesteTecnico.Api.v1
 
         // PUT api/<UserController>/5
         [HttpPut("{id:int}")]
-        public async Task<ActionResult> Put(int id, [FromBody] UserDto userDto)
+        public async Task<ActionResult> Put(int id, [FromBody] UsuarioDto userDto)
         {
             if (id != userDto.Id)
             {
@@ -94,12 +102,15 @@ namespace TesteTecnico.Api.v1
         public async Task<ActionResult> Delete(int id)
         {
             if (id <= 0)
-                return BadRequest("Código Inválido");
+            {
+                Notify("Código Inválido");
+                return CustomResponse();
+            }
 
             var userDto = await _applicationServiceUser.GetById(id);
 
             if (userDto == null)
-                return NotFound();
+                return NotFound("Não foi encontrado usuário com o código informado");
 
             await _applicationServiceUser.Delete(userDto);
 

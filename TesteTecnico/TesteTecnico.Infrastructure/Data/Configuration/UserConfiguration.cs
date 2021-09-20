@@ -4,17 +4,16 @@ using TesteTecnico.Entities.Entities;
 
 namespace TesteTecnico.Infrastructure.Data.Configuration
 {
-    public class UserConfiguration : IEntityTypeConfiguration<User>
+    public class UserConfiguration : IEntityTypeConfiguration<Usuario>
     {
-        public void Configure(EntityTypeBuilder<User> builder)
+        public void Configure(EntityTypeBuilder<Usuario> builder)
         {
-            builder.ToTable("User");
             builder.HasKey(u => u.Id);
-            builder.Property(u => u.Name).HasColumnType("VARCHAR(100)").IsRequired();
-            builder.Property(u => u.LastName).HasColumnType("VARCHAR(100)").IsRequired();
+            builder.Property(u => u.Nome).HasColumnType("VARCHAR(100)").IsRequired();
+            builder.Property(u => u.Sobrenome).HasColumnType("VARCHAR(100)").IsRequired();
             builder.Property(u => u.Email).HasColumnType("VARCHAR(100)").IsRequired();
-            builder.Property(u => u.BirthDate).HasColumnType("DATETIME").IsRequired();
-            builder.Property(u => u.SchoolingId).HasColumnType("INT").IsRequired();
+            builder.Property(u => u.DataNascimento).HasColumnType("DATETIME").IsRequired();
+            builder.Property(u => u.EscolaridadeId).HasColumnType("INT").IsRequired();
 
         }
     }

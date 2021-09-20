@@ -7,14 +7,15 @@ namespace TesteTecnico.Domain.Core.Interfaces.Services
 {
     public interface IServiceUser : IDisposable
     {
-        Task Save(User user);
+        Task Add(Usuario user);
+        Task Update(Usuario user);
 
-        Task Delete(User user);
+        Task Delete(Usuario user);
 
-        Task<User> Get(int id);
+        Task<Usuario> Get(int id);
 
-        Task<IEnumerable<User>> GetAll();
+        Task<IEnumerable<Usuario>> GetAll();
 
-        void Detach(User user);
+        void Detach(Usuario user);
     }
 }
